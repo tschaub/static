@@ -22,7 +22,7 @@
     }
   ],
   "scripts": {
-    "start": "browser-sync start --config config/bs-config.js & watchy --watch package.json,config,src -- make dev"
+    "start": "make dev && (browser-sync start --config config/bs-config.js & watchy --watch package.json,config,src -- make dev)"
   },
   "license": "BSD-2-Clause",
   "devDependencies": {
