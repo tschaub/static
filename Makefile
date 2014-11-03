@@ -43,6 +43,7 @@ $(DEV_DIR)/%.css: $(SRC_ALL_STYLE) node_modules/.install
 			$(patsubst $(DEV_DIR)/%.css,$(SRC_DIR)/%.less,./$@) | autoprefixer --output $@
 
 $(DEV_DIR)/.markup: $(SRC_ALL_MARKUP)
+	@mkdir -p $(DEV_DIR)
 	@node tasks/build-markup.js $(DEV_DIR)
 	@touch $@
 
@@ -64,6 +65,7 @@ $(DIST_DIR)/%.css: $(SRC_ALL_STYLE) node_modules/.install
 	@lessc --clean-css $(patsubst $(DIST_DIR)/%.css,$(SRC_DIR)/%.less,./$@) | autoprefixer --output $@
 
 $(DIST_DIR)/.markup: $(SRC_ALL_MARKUP)
+	@mkdir -p $(DEV_DIR)
 	@node tasks/build-markup.js $(DIST_DIR)
 	@touch $@
 

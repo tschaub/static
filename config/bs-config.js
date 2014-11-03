@@ -6,8 +6,7 @@
 module.exports = {
   files: 'build/dev/**',
   server: {
-    baseDir: 'build/dev',
-    directory: true
+    baseDir: 'build/dev'
   },
   open: false
 };
