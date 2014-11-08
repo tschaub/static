@@ -21,6 +21,19 @@ DEV_MAIN_STYLE := $(patsubst $(SRC_DIR)/%.less,$(DEV_DIR)/%.css,$(SRC_MAIN_STYLE
 DIST_MAIN_SCRIPT := $(patsubst $(SRC_DIR)/%,$(DIST_DIR)/%,$(SRC_MAIN_SCRIPT))
 DIST_MAIN_STYLE := $(patsubst $(SRC_DIR)/%.less,$(DIST_DIR)/%.css,$(SRC_MAIN_STYLE))
 
+# Create a distribution archive
+.PHONY: package
+package: clean-dist dist
+	tar --exclude='.?*' -czf $(NAME).tgz -C $(DIST_DIR) .
+
+.PHONY: clean-dist
+clean-dist: clean-dev
+	@rm -rf $(DIST_DIR)
+
+.PHONY: clean-dev
+clean-dev:
+	@rm -rf $(DEV_DIR)
+
 
 # Install Node based dependencies
 node_modules/.install: package.json
@@ -43,8 +56,7 @@ $(DEV_DIR)/%.css: $(SRC_ALL_STYLE) node_modules/.install
 			$(patsubst $(DEV_DIR)/%.css,$(SRC_DIR)/%.less,./$@) | autoprefixer --output $@
 
 $(DEV_DIR)/.markup: $(SRC_ALL_MARKUP)
-	@mkdir -p $(DEV_DIR)
-	@node tasks/build-markup.js $(DEV_DIR)
+	@hymark $(SRC_DIR) $(DEV_DIR) --engine=handlebars --templates=$(SRC_DIR)/_templates
 	@touch $@
 
 .PHONY: dev-assets
@@ -65,8 +77,7 @@ $(DIST_DIR)/%.css: $(SRC_ALL_STYLE) node_modules/.install
 	@lessc --clean-css $(patsubst $(DIST_DIR)/%.css,$(SRC_DIR)/%.less,./$@) | autoprefixer --output $@
 
 $(DIST_DIR)/.markup: $(SRC_ALL_MARKUP)
-	@mkdir -p $(DEV_DIR)
-	@node tasks/build-markup.js $(DIST_DIR)
+	@hymark $(SRC_DIR) $(DIST_DIR) --engine=handlebars --templates=$(SRC_DIR)/_templates
 	@touch $@
 
 .PHONY: dist-assets

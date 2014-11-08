@@ -1,5 +1,9 @@
 ---
-title: Site Index
+title: Static Site
+template: page.html
 ---
 
-# hello world
+# Index
+
+ * [Static App 1](app1/)
+ * [Static App 2](app2/)
