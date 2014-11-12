@@ -1,9 +1,9 @@
 ---
-title: Static App 2
+title: Page 2
 template: page.html
 ---
 
-# Static App 2
+# Page 2
 
 * [root](..)
 

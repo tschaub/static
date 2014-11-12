@@ -22,7 +22,7 @@
     }
   ],
   "scripts": {
-    "start": "make dev && (browser-sync start --config config/bs-config.js & watchy --watch Makefile,package.json,config,src -- make dev)"
+    "start": "make start"
   },
   "license": "BSD-2-Clause",
   "devDependencies": {
@@ -32,6 +32,8 @@
     "browserify-shim": "~3.8.0",
     "handlebars": "^2.0.0",
     "hymark": "^0.2.1",
+    "jscs": "^1.7.3",
+    "json": "^9.0.2",
     "less": "^1.7.5",
     "uglify-js": "~2.4.15",
     "watchy": "^0.5.4"

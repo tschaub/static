@@ -5,5 +5,5 @@ template: page.html
 
 # Index
 
- * [Static App 1](app1/)
- * [Static App 2](app2/)
+ * [Page 1](page1/)
+ * [Page 2](page2/)

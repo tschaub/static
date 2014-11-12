@@ -1,10 +1,10 @@
 ---
-title: Static App 1
+title: Page 1
 template: page.html
 extra_head: <link href="main.css" rel="stylesheet" type="text/css">
 ---
 
-# Static App 1
+# Page 1
 
 * [root](..)
 
